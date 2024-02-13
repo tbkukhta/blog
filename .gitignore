@@ -3,6 +3,7 @@
 /public/assets
 /public/uploads
 /public/userfiles
+/public/mix-manifest.json
 /storage/*.key
 /vendor
 .env.backup

@@ -8,7 +8,7 @@
             <th>Link</th>
             <th>Block</th>
             <th>Status</th>
-            <th>Date</th>
+            <th>Update date</th>
             <th>Actions</th>
         </tr>
         </thead>
