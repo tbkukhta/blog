@@ -55,7 +55,7 @@
                                     <label for="tags">Tags</label>
                                     <select class="select2" id="tags" name="tags[]" multiple="multiple" data-placeholder="Select tags..." style="width: 100%;">
                                         @foreach($tags as $key => $value)
-                                            <option value="{{ $key }}" @if(old('tags') == $key) selected @endif>{{ $value }}</option>
+                                            <option value="{{ $key }}" @if(is_array(old('tags')) && in_array($key, old('tags'))) selected @endif>{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>

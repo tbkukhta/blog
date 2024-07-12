@@ -76,11 +76,11 @@ class Post extends Model
 
     public static function setPopularPosts($cache = false)
     {
-        if ($cache && cache()->has('posts')) {
-            return cache()->get('posts');
+        if ($cache && cache()->has('posts:popular')) {
+            return cache()->get('posts:popular');
         }
-        $posts = self::orderBy('views', 'desc')->limit(env('POPULAR_COUNT'))->get();
-        cache()->put('posts', $posts, env('CACHE_INTERVAL'));
+        $posts = self::active()->orderBy('views', 'desc')->limit(env('POPULAR_COUNT'))->get();
+        cache()->put('posts:popular', $posts, env('CACHE_INTERVAL'));
         return $posts;
     }
 }

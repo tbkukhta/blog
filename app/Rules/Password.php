@@ -7,11 +7,8 @@ use Illuminate\Contracts\Validation\ValidationRule;
 
 class Password implements ValidationRule
 {
-    protected bool $empty;
-
-    public function __construct($empty = false)
+    public function __construct(protected bool $empty = false, ...$args)
     {
-        $this->empty = $empty;
     }
 
     /**

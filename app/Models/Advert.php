@@ -31,7 +31,7 @@ class Advert extends Model
 
     public static function getAdvert(int $block)
     {
-        $key = "advert{$block}";
+        $key = "adverts:advert{$block}";
         if (cache()->has($key)) {
             return cache()->get($key);
         }

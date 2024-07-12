@@ -25,9 +25,9 @@ class PostRequest extends FormRequest
             'title' => 'required|min:'.env('MIN_TITLE_LENGTH').'|max:'.env('MAX_TITLE_LENGTH'),
             'description' => 'required|min:'.env('MIN_TEXT_LENGTH').'|max:'.env('MAX_TEXT_LENGTH'),
             'content' => 'required|min:'.env('MIN_TEXT_LENGTH').'|max:'.env('MAX_TEXT_LENGTH'),
-            'category_id' => 'required:integer',
+            'category_id' => 'required|integer|exists:categories,id',
             'thumbnail' => 'nullable|image',
-            'status' => 'required:integer',
+            'status' => 'required|integer|between:0,1',
         ];
     }
 

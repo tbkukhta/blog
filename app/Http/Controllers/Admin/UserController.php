@@ -39,8 +39,8 @@ class UserController extends Controller
             'question' => 'nullable|required_with:answer|min:'.env('MIN_STRING_LENGTH').'|max:'.env('MAX_STRING_LENGTH'),
             'answer' => 'nullable|required_with:question|min:'.env('MIN_STRING_LENGTH').'|max:'.env('MAX_STRING_LENGTH'),
             'avatar' => 'nullable|image',
-            'is_admin' => 'required:integer',
-            'status' => 'required:integer',
+            'is_admin' => 'required|integer',
+            'status' => 'required|integer',
         ], attributes: User::getAttributesNames());
         if ($validator->fails()) {
             return back()->withInput()->withErrors($validator->messages());

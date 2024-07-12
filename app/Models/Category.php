@@ -34,11 +34,11 @@ class Category extends Model
 
     public static function setPopularCategories($cache = false)
     {
-        if ($cache && cache()->has('categories')) {
-            return cache()->get('categories');
+        if ($cache && cache()->has('categories:popular')) {
+            return cache()->get('categories:popular');
         }
         $categories = self::orderBy('posts_count', 'desc')->withCount('posts')->limit(env('POPULAR_COUNT'))->get();
-        cache()->put('categories', $categories, env('CACHE_INTERVAL'));
+        cache()->put('categories:popular', $categories, env('CACHE_INTERVAL'));
         return $categories;
     }
 }

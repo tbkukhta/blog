@@ -18,6 +18,11 @@ class AdminMiddleware
         if (auth()->check() && auth()->user()->is_admin) {
             return $next($request);
         }
-        return redirect()->route('login.create');
+
+        return $request->is('api/*')
+            ? response()->json([
+                'message' => 'Forbidden.'
+            ], 403)
+            : redirect()->route('login.create');
     }
 }

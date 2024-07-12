@@ -34,11 +34,11 @@ class Tag extends Model
 
     public static function setPopularTags($cache = false)
     {
-        if ($cache && cache()->has('tags')) {
-            return cache()->get('tags');
+        if ($cache && cache()->has('tags:popular')) {
+            return cache()->get('tags:popular');
         }
         $tags = self::orderBy('posts_count', 'desc')->withCount('posts')->limit(env('POPULAR_COUNT'))->get();
-        cache()->put('tags', $tags, env('CACHE_INTERVAL'));
+        cache()->put('tags:popular', $tags, env('CACHE_INTERVAL'));
         return $tags;
     }
 }
